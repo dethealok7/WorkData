@@ -35,7 +35,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Double.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 1){
+                if(((Double) n1).compareTo( (Double) n2 ) == 1){
                     return true;
                 }
                 
@@ -43,7 +43,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 1){
+                if(((Integer) n1).compareTo( (Integer) n2 ) == 1){
                     return true;
                 }
             }
@@ -74,7 +74,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Double.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == -1){
+                if(((Double) n1).compareTo( (Double) n2 ) == -1){
                     return true;
                 }
                 
@@ -82,7 +82,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == -1){
+                if(((Integer) n1).compareTo( (Integer) n2 ) == -1){
                     return true;
                 }
             }
@@ -112,7 +112,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Double.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 0){
+                if(((Double) n1).compareTo( (Double) n2 ) == 0){
                     return true;
                 }
                 
@@ -120,7 +120,7 @@ public class NumberUtilM {
             else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
                     num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
                 
-                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 0){
+                if(((Integer) n1).compareTo( (Integer) n2 ) == 0){
                     return true;
                 }
             }
