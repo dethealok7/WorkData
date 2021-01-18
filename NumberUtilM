@@ -20,15 +20,15 @@ public class NumberUtilM<N> {
        
        try{
            
-           if( n1.getCanonicalName().matches(".*"+e.BigDecimal.toString())){
+           if( n1.getSimpleName().matches(".*"+e.BigDecimal.toString())){
                
                return  ((BigDecimal) d).doubleValue();
            }
-           else if( n1.getCanonicalName().matches(".*"+e.Double.toString())){
+           else if( n1.getSimpleName().matches(".*"+e.Double.toString())){
                
                return ((Double) d).doubleValue();
            }
-           else if( n1.getCanonicalName().matches(".*"+e.Integer.toString()) ){
+           else if( n1.getSimpleName().matches(".*"+e.Integer.toString()) ){
                
                return ((Integer)d).doubleValue();
            }
