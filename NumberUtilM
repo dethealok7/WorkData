@@ -6,17 +6,50 @@ import java.math.BigDecimal;
 
 /** @author alokdethe
  */
-public class NumberUtilM<N> {
+public class NumberUtilM {
     
-    private N n;
+    //private N n;
     
     enum e { BigDecimal, Double, Integer, String, Long }
    //BigDecimal, Double, Integer, String, Long
     
+    public String getString(Number d){
+       
+        return d.toString();
+    }
+    
+    
+    
+    public BigDecimal getBigDecimal(Number d){
+        
+        //n = (N)d;
+        
+        Class<? extends Number> n1 = (Class) d.getClass();
+        
+        try{
+            if( n1.getSimpleName().matches(".*"+e.BigDecimal.toString())){
+               
+               return  (BigDecimal) d;
+           }
+           else if( n1.getSimpleName().matches(".*"+e.Double.toString())){
+               
+               return BigDecimal.valueOf(d.doubleValue());
+           }
+           else if( n1.getSimpleName().matches(".*"+e.Integer.toString()) ){
+               
+               return BigDecimal.valueOf(d.intValue());
+           }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return null; 
+    }
+    
     public Double getDouble(Number d){
 
-       n = (N)d;     
-       Class<? extends Number> n1 = (Class) n.getClass();
+       //n = (N)d;     
+       Class<? extends Number> n1 = (Class) d.getClass();
        
        try{
            
