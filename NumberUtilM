@@ -1,0 +1,45 @@
+
+package com.poc.restapi.utility;
+
+import java.math.BigDecimal;
+
+
+/* @author alokdethe*/
+public class NumberUtilM<N> {
+    
+    private N n;
+    
+    enum e { BigDecimal, Double, Integer, String, Long }
+   //BigDecimal, Double, Integer, String, Long
+    
+    public Double getDouble(Number d){
+
+       n = (N)d;     
+       Class<? extends Number> n1 = (Class) n.getClass();
+       
+       try{
+           
+           if( n1.getCanonicalName().matches(".*"+e.BigDecimal.toString())){
+               
+               return d.doubleValue();
+           }
+           else if( n1.getCanonicalName().matches(".*"+e.Double.toString())){
+               
+               return (Double)d;
+           }
+           else if( n1.getCanonicalName().matches(".*"+e.Integer.toString()) ){
+               
+               return (Double)d.doubleValue(); 
+           }
+           
+       }
+       catch(Exception ex){
+           ex.printStackTrace();
+       }
+       return null;
+    }
+   
+ 
+    
+}
+
