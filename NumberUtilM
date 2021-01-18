@@ -9,7 +9,7 @@ public class NumberUtilM<N> {
     
     private N n;
     
-    enum e { BigDecimal, Double, Integer, String, Long }
+    enum e { BigDecimal, Double, Integer, Long }
    //BigDecimal, Double, Integer, String, Long
     
     public Double getDouble(Number d){
