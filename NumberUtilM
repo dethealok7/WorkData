@@ -18,7 +18,120 @@ public class NumberUtilM {
         return d.toString();
     }
     
+    public boolean isGreaterThan(Number n1, Number n2){
+        
+         Class<? extends Number> num1 = (Class) n1.getClass();
+         Class<? extends Number> num2 = (Class) n2.getClass();
+        
+        try{
+            if( num1.getSimpleName().matches(".*"+e.BigDecimal.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.BigDecimal.toString()) ){
+               
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 1){
+                    return true;
+                }
+                
+           }
+            else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Double.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 1){
+                    return true;
+                }
+                
+            }
+            else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 1){
+                    return true;
+                }
+            }
+           
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        return false;
+        
+    }
     
+    public boolean isLowerThan(Number n1, Number n2){
+        
+        Class<? extends Number> num1 = (Class) n1.getClass();
+         Class<? extends Number> num2 = (Class) n2.getClass();
+        
+        try{
+            if( num1.getSimpleName().matches(".*"+e.BigDecimal.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.BigDecimal.toString()) ){
+               
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == -1){
+                    return true;
+                }
+                
+           }
+            else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Double.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == -1){
+                    return true;
+                }
+                
+            }
+            else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == -1){
+                    return true;
+                }
+            }
+           
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        return false;
+    }
+    
+    public boolean isEqualTo(Number n1, Number n2){
+        
+         Class<? extends Number> num1 = (Class) n1.getClass();
+         Class<? extends Number> num2 = (Class) n2.getClass();
+        
+        try{
+            if( num1.getSimpleName().matches(".*"+e.BigDecimal.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.BigDecimal.toString()) ){
+               
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 0){
+                    return true;
+                }
+                
+           }
+            else if( num1.getSimpleName().matches(".*"+e.Double.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Double.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 0){
+                    return true;
+                }
+                
+            }
+            else if( num1.getSimpleName().matches(".*"+e.Integer.toString()) && 
+                    num2.getSimpleName().matches(".*"+e.Integer.toString()) ){
+                
+                if(((BigDecimal) n1).compareTo( (BigDecimal) n2 ) == 0){
+                    return true;
+                }
+            }
+           
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        return false;
+    }
     
     public BigDecimal getBigDecimal(Number d){
         
