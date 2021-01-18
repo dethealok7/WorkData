@@ -1,15 +1,16 @@
 
-package com.poc.restapi.utility;
+package com.poc.restapi;
 
 import java.math.BigDecimal;
 
 
-/* @author alokdethe*/
+/** @author alokdethe
+ */
 public class NumberUtilM<N> {
     
     private N n;
     
-    enum e { BigDecimal, Double, Integer, Long }
+    enum e { BigDecimal, Double, Integer, String, Long }
    //BigDecimal, Double, Integer, String, Long
     
     public Double getDouble(Number d){
@@ -21,15 +22,15 @@ public class NumberUtilM<N> {
            
            if( n1.getCanonicalName().matches(".*"+e.BigDecimal.toString())){
                
-               return d.doubleValue();
+               return  ((BigDecimal) d).doubleValue();
            }
            else if( n1.getCanonicalName().matches(".*"+e.Double.toString())){
                
-               return (Double)d;
+               return ((Double) d).doubleValue();
            }
            else if( n1.getCanonicalName().matches(".*"+e.Integer.toString()) ){
                
-               return (Double)d.doubleValue(); 
+               return ((Integer)d).doubleValue();
            }
            
        }
