@@ -29,8 +29,9 @@ public class KafkaConsumer {
     @Autowired
     private ConsumerRecordKafkaMsgMap consumerRecordKafkaMsgMap;
     
-    @KafkaListener(topics = "#{'${kafka.topic.names}'.split(',')}")
+    @KafkaListener(topics = "topics")
     public void receive(ConsumerRecord<String, byte[]> consumerRecord){
         kafkaMsgPro.process(consumerRecordKafkaMsgMap.getKafkaMessage(consumerRecord, null), consumerRecord.value());
     }
 }
+
