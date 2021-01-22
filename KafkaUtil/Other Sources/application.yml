@@ -1,0 +1,22 @@
+## YAML Template.
+kafka:
+  message:
+    max:
+      size: ""
+  bootstrapServer: ""
+  bootstrapServerPort: ""
+  retrieval: 
+    groupConfig: ""
+  ssl:
+    cert: ""
+    passcode: ""
+  topic:
+    names: ""
+  consumer: 
+    enable: ""
+  auto:
+    commit: ""    
+        
+    
+        
+    
