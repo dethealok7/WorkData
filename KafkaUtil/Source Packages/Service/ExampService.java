@@ -12,8 +12,8 @@ package com.treemode.kpro.Service;
  *
  * @author alokdethe
  */
-public class ExampService {
+public interface ExampService {
     
-    
+    public void getMessage();
     
 }

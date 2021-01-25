@@ -12,6 +12,11 @@ package com.treemode.kpro.ServiceImpl;
  *
  * @author alokdethe
  */
-public class ExampServiceImpl {
+public class ExampServiceImpl implements ExampService {
+
+    @Override
+    public void getMessage() {
+        throw new UnsupportedOperationException("Not supported yet."); //
+    }
     
 }
