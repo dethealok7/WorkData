@@ -2,20 +2,20 @@
 kafka:
   message:
     max:
-      size: ""
+      size: "1000000"
   bootstrapServer: ""
   bootstrapServerPort: ""
   retrieval: 
     groupConfig: ""
-  ssl:
-    cert: ""
-    passcode: ""
+  #ssl:
+    #cert: ""
+    #passcode: ""
   topic:
-    names: ""
+    names: "newtopic"
   consumer: 
-    enable: ""
+    enable: "true"
   auto:
-    commit: ""    
+    commit: "false"
         
     
         
