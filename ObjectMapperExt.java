@@ -18,12 +18,42 @@ public class ObjectMapperExt extends ObjectMapper {
     }
     
     /*
+    Checks if the key exists
+    
+    key: key to be found
+    jsonPath: Path to json file
+    */
+    public boolean findIfKeyExists(String key, String jsonPath){
+    
+        String mode="1";
+        File f = new File(""+jsonPath);
+        boolean keyExistence = false;
+        
+        try{
+            JsonNode j  = readTree(f);
+            Iterator<String> itr = j.fieldNames();
+            
+            while(itr.hasNext()){
+                
+                if(key.equalsIgnoreCase(itr.next())){
+                    keyExistence = true;
+                }
+            }
+            
+        }catch(Exception ex){
+           ex.printStackTrace();
+        }
+            
+        return keyExistence;
+    }
+    
+    /*
     Finds the word if exists in the JSON
     
     key: Word to be found
-    strJson: Path to the json file
+    jsonPath: Path to the json file
     */
-    public boolean findObjectExist(String key, String strJson){
+    public boolean findObjectExist(String key, String jsonPath){
         
         boolean resultOf=false;
         
