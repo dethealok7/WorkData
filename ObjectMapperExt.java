@@ -48,31 +48,31 @@ public class ObjectMapperExt extends ObjectMapper {
     }
     
     /*
-    Finds the value if exists in the JSON
+    Get the List of Nodes for the specific key
     
-    key: Value to be found
-    jsonPath: Path to the json file
+    key: key whose value needs to be retreived
+    jsonPath: path to json file
     */
-    public boolean findIfValueExists(String key, String jsonPath){
+    public List<JsonNode> getValueForKey(String key, String jsonPath){
     
         String mode="1";
         File f = new File(""+jsonPath);
         boolean keyExistence = false;
+        List<JsonNode> jnode = null;
         
         try{
             JsonNode j  = readTree(f);
-            List<JsonNode> jnode = j.findValues(key);
+            jnode = j.findValues(key);
             
-            if(!jnode.isEmpty()){
-                //System.out.println("Check existence ==> "+itr.next());
-                keyExistence = true;
+            for(int i=0; i<jnode.size(); i++){
+                System.out.println(" ==> "+jnode.toString());
             }
             
         }catch(Exception ex){
            ex.printStackTrace();
         }
-            //System.out.println("Check existence ==> "+keyExistence);
-        return keyExistence;
+           
+        return jnode;
     }
     
     /*
