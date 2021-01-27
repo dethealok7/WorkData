@@ -64,10 +64,6 @@ public class ObjectMapperExt extends ObjectMapper {
             JsonNode j  = readTree(f);
             jnode = j.findValues(key);
             
-            for(int i=0; i<jnode.size(); i++){
-                System.out.println(" ==> "+jnode.toString());
-            }
-            
         }catch(Exception ex){
            ex.printStackTrace();
         }
