@@ -17,6 +17,41 @@ public class ObjectMapperExt extends ObjectMapper {
         return null;
     }
     
+     /*
+    Get the JsonNode from the Json File
+    
+    jsonPath: Path to the Json File
+    */
+    public JsonNode getFromFileToJsonNode(String jsonPath){
+        
+        File f = new File(""+jsonPath);
+        JsonNode jnode=null;
+        
+         try
+         {
+             if(true){
+                FileInputStream b;
+                b = new FileInputStream(f);
+                int cnt;
+                String finalOutput="";
+                
+                do{
+                    cnt = b.read();
+                    finalOutput = finalOutput + ((char) cnt );
+                }while(cnt != -1);
+                
+                jnode = readTree(finalOutput);
+                
+            }
+             
+         }
+         catch(Exception ex){
+             ex.printStackTrace();
+         }
+         
+         return jnode;
+    }
+    
     /*
     Checks if the key exists
     
