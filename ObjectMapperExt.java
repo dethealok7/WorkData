@@ -29,7 +29,7 @@ public class ObjectMapperExt extends ObjectMapper {
         
          try
          {
-             if(f.canRead() && f.exists()){
+             if( f.exists() && f.canRead()){
                 FileInputStream b;
                 b = new FileInputStream(f);
                 int cnt;
@@ -50,6 +50,52 @@ public class ObjectMapperExt extends ObjectMapper {
          }
          
          return jnode;
+    }
+    
+    /*
+    Get the JsonNode from the key
+    
+    key: key whose node is required
+    jsonPath: Path to the Json File
+    */
+    public JsonNode getNode(String key, String jsonPath){
+        
+        File f = new File(""+jsonPath);
+        JsonNode jnode=null;
+        
+         try
+         {
+             if(f.exists() && f.canRead()){
+                FileInputStream b;
+                b = new FileInputStream(f);
+                int cnt;
+                String finalOutput="";
+                Map<String, JsonNode> mapN = null;
+                
+                do{
+                    cnt = b.read();
+                    finalOutput = finalOutput + ((char) cnt );
+                }while(cnt != -1);
+                
+                jnode = readTree(finalOutput);
+                Iterator<Entry<String, JsonNode>> itr = jnode.fields();
+                
+                while(itr.hasNext()){
+                    Entry<String, JsonNode> ent =  itr.next();
+                    if(ent.getKey().equalsIgnoreCase(key)){
+                        jnode = ent.getValue();
+                        break;
+                    }
+                }
+                
+            }
+             
+         }
+         catch(Exception ex){
+             ex.printStackTrace();
+         }
+        
+        return jnode;
     }
     
     /*
@@ -96,7 +142,7 @@ public class ObjectMapperExt extends ObjectMapper {
         FileInputStream fin = null;
         int c;
         
-        if(f.canRead() && f.exists()){
+        if( f.exists() && f.canRead() ){
             
             try{
                 
@@ -160,7 +206,7 @@ public class ObjectMapperExt extends ObjectMapper {
             String strToBeFound=key;
             
             //f..exists() && f.canRead() && f.isFile()
-            if(f.canRead() && f.exists()){
+            if( f.exists() && f.canRead() ){
                 FileInputStream b;
                 b = new FileInputStream(f);
                 
