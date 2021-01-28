@@ -52,16 +52,16 @@ public class ObjectMapperExt extends ObjectMapper {
          return jnode;
     }
     
-    /*
+   /*
     Get the JsonNode from the key
     
     key: key whose node is required
-    jsonPath: Path to the Json File
     */
     public JsonNode getNode(String key, String jsonPath){
         
         File f = new File(""+jsonPath);
         JsonNode jnode=null;
+        JsonNode joutput = null;
         
          try
          {
@@ -78,12 +78,12 @@ public class ObjectMapperExt extends ObjectMapper {
                 }while(cnt != -1);
                 
                 jnode = readTree(finalOutput);
-                Iterator<Entry<String, JsonNode>> itr = jnode.fields();
-                
+                Iterator<String> itr = jnode.fieldNames();
+                String ent = "";
                 while(itr.hasNext()){
-                    Entry<String, JsonNode> ent =  itr.next();
-                    if(ent.getKey().equalsIgnoreCase(key)){
-                        jnode = ent.getValue();
+                    ent =  itr.next();
+                    if(ent.equalsIgnoreCase(key)){
+                        joutput = jnode.get(ent);
                         break;
                     }
                 }
@@ -95,7 +95,7 @@ public class ObjectMapperExt extends ObjectMapper {
              ex.printStackTrace();
          }
         
-        return jnode;
+        return joutput;
     }
     
     /*
