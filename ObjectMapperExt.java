@@ -29,7 +29,7 @@ public class ObjectMapperExt extends ObjectMapper {
         
          try
          {
-             if(true){
+             if(.canRead() && f.exists()){
                 FileInputStream b;
                 b = new FileInputStream(f);
                 int cnt;
@@ -53,24 +53,22 @@ public class ObjectMapperExt extends ObjectMapper {
     }
     
     /*
-    Checks if the key exists
+    Finds the key if exists in the JSON
     
     key: key to be found
-    jsonPath: Path to json file
+    strJson: Actual json as String
     */
-    public boolean findIfKeyExists(String key, String jsonPath){
-    
-        String mode="1";
-        File f = new File(""+jsonPath);
+    public boolean findIfKeyExists(String key, String jsonString){
         boolean keyExistence = false;
         
         try{
-            JsonNode j  = readTree(f);
+            JsonNode j  = readTree(jsonString);
             Iterator<String> itr = j.fieldNames();
             
             while(itr.hasNext()){
                 
                 if(key.equalsIgnoreCase(itr.next())){
+                    
                     keyExistence = true;
                 }
             }
@@ -79,6 +77,46 @@ public class ObjectMapperExt extends ObjectMapper {
            ex.printStackTrace();
         }
             
+        return keyExistence;
+        
+    }
+    
+    /*
+    Finds the key if exists in the JSON
+    
+    key: key to be found
+    strJson: Path of the Json File
+    */
+    public boolean findIfKeyExists(String key, Path jsonPath){
+    
+        String jPath = jsonPath.toString();
+        File f = new File(""+jPath);
+        boolean keyExistence = false;
+        String inString = "";
+        FileInputStream fin = null;
+        int c;
+        
+        if(f.canRead() && f.exists()){
+            System.out.println("Can Read ==> ");
+            //findIfKeyExists();
+            try{
+                
+                fin = new FileInputStream(f);
+                do{
+                    c = fin.read();
+                    inString = inString + (char)c;
+                }while(c != -1);
+                
+            }catch(FileNotFoundException ex){
+                ex.printStackTrace();
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+            
+            
+        }
+        
+        keyExistence = findIfKeyExists(key, inString);
         return keyExistence;
     }
     
@@ -123,7 +161,7 @@ public class ObjectMapperExt extends ObjectMapper {
             String strToBeFound=key;
             
             //f..exists() && f.canRead() && f.isFile()
-            if(true){
+            if(f.canRead() && f.exists()){
                 FileInputStream b;
                 b = new FileInputStream(f);
                 
