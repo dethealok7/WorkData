@@ -52,51 +52,7 @@ public class ObjectMapperExt extends ObjectMapper {
          return jnode;
     }
     
-   /*
-    Get the JsonNode from the key
-    
-    key: key whose node is required
-    */
-    public JsonNode getNode(String key, String jsonPath){
-        
-        File f = new File(""+jsonPath);
-        JsonNode jnode=null;
-        JsonNode joutput = null;
-        
-         try
-         {
-             if(f.exists() && f.canRead()){
-                FileInputStream b;
-                b = new FileInputStream(f);
-                int cnt;
-                String finalOutput="";
-                Map<String, JsonNode> mapN = null;
-                
-                do{
-                    cnt = b.read();
-                    finalOutput = finalOutput + ((char) cnt );
-                }while(cnt != -1);
-                
-                jnode = readTree(finalOutput);
-                Iterator<String> itr = jnode.fieldNames();
-                String ent = "";
-                while(itr.hasNext()){
-                    ent =  itr.next();
-                    if(ent.equalsIgnoreCase(key)){
-                        joutput = jnode.get(ent);
-                        break;
-                    }
-                }
-                
-            }
-             
-         }
-         catch(Exception ex){
-             ex.printStackTrace();
-         }
-        
-        return joutput;
-    }
+   
     
     /*
     Finds the key if exists in the JSON
