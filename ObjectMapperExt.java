@@ -29,7 +29,7 @@ public class ObjectMapperExt extends ObjectMapper {
         
          try
          {
-             if(.canRead() && f.exists()){
+             if(f.canRead() && f.exists()){
                 FileInputStream b;
                 b = new FileInputStream(f);
                 int cnt;
@@ -97,8 +97,7 @@ public class ObjectMapperExt extends ObjectMapper {
         int c;
         
         if(f.canRead() && f.exists()){
-            System.out.println("Can Read ==> ");
-            //findIfKeyExists();
+            
             try{
                 
                 fin = new FileInputStream(f);
@@ -178,7 +177,6 @@ public class ObjectMapperExt extends ObjectMapper {
                         do{
                            finalChar = (char)b.read();
                            finalOutput = finalOutput + finalChar;
-                           System.out.println("char ==> "+finalOutput);
                         }while(finalChar != '"' );
                         
                         finalOutput = finalOutput.substring(0, finalOutput.length()-1);
