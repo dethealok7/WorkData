@@ -72,6 +72,7 @@ public class ObjectMapperExt extends ObjectMapper {
                 if(key.equalsIgnoreCase(itr.next())){
                     
                     keyExistence = true;
+                    break;
                 }
             }
             
@@ -89,7 +90,7 @@ public class ObjectMapperExt extends ObjectMapper {
     key: key to be found
     strJson: Path of the Json File
     */
-    public boolean findIfKeyExists(String key, Path jsonPath){
+    /*public boolean findIfKeyExists(String key, Path jsonPath){
     
         String jPath = jsonPath.toString();
         File f = new File(""+jPath);
@@ -119,6 +120,48 @@ public class ObjectMapperExt extends ObjectMapper {
         
         keyExistence = findIfKeyExists(key, inString);
         return keyExistence;
+    }*/
+    
+    
+    /*
+    Finds the key if exists in the JSON
+    
+    key: key to be found
+    strJson: Actual json as String
+    */
+    public boolean findIfKeyExists(String key, String jsonString){
+        boolean keyExistence = false;
+        
+        try{
+            JsonNode j  = readTree(jsonString);
+            Iterator<String> itr = j.fieldNames();
+            JsonNode jn = null;
+            
+            while(itr.hasNext()){
+                String h = itr.next();
+                jn = j.findValue(h);
+                
+                if(key.equalsIgnoreCase(h)){
+                    
+                    keyExistence = true;
+                    break;
+                }
+                else if( ( jn.getNodeType() ).name() == "OBJECT" ){
+                    
+                    if(findIfKeyExists(key, jn.toString())){
+                        keyExistence = true;
+                        break;
+                    }
+                }
+                
+            }
+            
+        }catch(Exception ex){
+           ex.printStackTrace();
+        }
+            
+        return keyExistence;
+        
     }
     
     /*
