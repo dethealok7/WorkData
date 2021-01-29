@@ -146,7 +146,7 @@ public class ObjectMapperExt extends ObjectMapper {
                     keyExistence = true;
                     break;
                 }
-                else if( ( jn.getNodeType() ).name() == "OBJECT" ){
+                else if( ( ( jn.getNodeType() ).name() ).equalsIgnoreCase( "OBJECT" ) ){
                     
                     if(findIfKeyExists(key, jn.toString())){
                         keyExistence = true;
