@@ -60,7 +60,7 @@ public class ObjectMapperExt extends ObjectMapper {
     key: key to be found
     strJson: Actual json as String
     */
-    public boolean findIfKeyExists(String key, String jsonString){
+    /*public boolean findIfKeyExists(String key, String jsonString){
         boolean keyExistence = false;
         
         try{
@@ -82,7 +82,7 @@ public class ObjectMapperExt extends ObjectMapper {
             
         return keyExistence;
         
-    }
+    }*/
     
     /*
     Finds the key if exists in the JSON
@@ -90,7 +90,7 @@ public class ObjectMapperExt extends ObjectMapper {
     key: key to be found
     strJson: Path of the Json File
     */
-    /*public boolean findIfKeyExists(String key, Path jsonPath){
+    public boolean findIfKeyExists(String key, Path jsonPath){
     
         String jPath = jsonPath.toString();
         File f = new File(""+jPath);
@@ -120,7 +120,7 @@ public class ObjectMapperExt extends ObjectMapper {
         
         keyExistence = findIfKeyExists(key, inString);
         return keyExistence;
-    }*/
+    }
     
     
     /*
