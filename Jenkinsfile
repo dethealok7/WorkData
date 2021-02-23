@@ -4,15 +4,17 @@ pipeline {
     stages {
         stage('Download') {
             steps {
-                sh "mkdir -p output"
-                writeFile file: "output/testFile.txt", text: "This is example file for Jenkins"
+                //sh "mkdir -p output"
+                //writeFile file: "output/testFile.txt", text: "This is example file for Jenkins"
+                //Check for working condition
+                sh "mvn --version"
             }
         }
         stage('Build') {
             steps {
-                sh 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-                
+                //sh 'make' 
+                //archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                sh "mvn --version"
             }
         }
         stage('Test') {
@@ -20,8 +22,9 @@ pipeline {
                 /* `make check` returns non-zero on test failures,
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
-                sh 'make check || true' 
-                junit '**/target/*.xml' 
+                //sh 'make check || true' 
+                //junit '**/target/*.xml' 
+                sh "mvn --version"
             }
         }
          stage('Deploy') {
@@ -31,7 +34,8 @@ pipeline {
               }
             }
             steps {
-                sh 'make publish'
+                //sh 'make publish'
+                sh "mvn --version"
             }
         }
     }
