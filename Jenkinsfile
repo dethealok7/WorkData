@@ -15,6 +15,8 @@ pipeline {
                 //sh 'make' 
                 //archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                 sh "mvn --version"
+                echo "hello world 2"
+                sh "mvn --version"
             }
         }
         stage('Test') {
