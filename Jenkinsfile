@@ -8,6 +8,7 @@ pipeline {
                 //writeFile file: "output/testFile.txt", text: "This is example file for Jenkins"
                 //Check for working condition
                 sh "mvn --version"
+                echo "recent changes triggers build"
             }
         }
         stage('Build') {
