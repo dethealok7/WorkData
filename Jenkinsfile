@@ -8,6 +8,8 @@ pipeline {
                 //archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                 //check for working conditions
                 sh "mvn --version"
+                echo "hello world"
+                sh "mvn --version"
             }
         }
         stage('Test') {
