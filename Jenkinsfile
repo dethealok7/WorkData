@@ -9,6 +9,7 @@ pipeline {
                 //Check for working condition
                 sh "mvn --version"
                 echo "recent changes triggers build"
+                echo "recent"
             }
         }
         stage('Build') {
