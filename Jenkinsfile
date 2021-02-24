@@ -21,6 +21,7 @@ pipeline {
                 //junit '**/target/*.xml' 
                 //check for working conditions
                 sh "mvn --version"
+                echo "hello world"
             }
         }
     }
